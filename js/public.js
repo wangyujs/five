@@ -1,0 +1,1 @@
+"use strict";$("#foot-pop #pop-content p").click(function(){$("#foot-pop").hide()}),$(".backTop").click(function(){$("html").animate({scrollTop:0},400)});

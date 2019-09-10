@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>登录</title>
+		<link rel="stylesheet" href="css/login.min.css">
+	</head>
+	<body>
+		<div id="public"></div>
+		<header class='clear_fix'>
+			<img src="img/logomin.jpg" alt="">
+			<p>欢迎登录</p>
+			<h6><img src="img/phone-logomin.png" alt=""> 贵宾专线：4008-6767-38</h6>
+		</header>
+		<div id="banner">
+			<div id="banner-content">
+				<img src="img/login_background1min.jpg" alt="">
+				<form action="/user/login" id='log-tb'>
+				<!-- <section id="log-tb"> -->
+					<a href="#" class='log-nav'>扫码登录</a>
+					<a href="#" class='log-nav'>账户登录</a>
+					<div id='lt-log' class='logdiv'>
+						<section id="img2" class='clear_fix'>
+							<img src="img/40 (1)min.png" alt="">
+							<img src="img/40 (2)min.png" alt="" class='img2'>
+						</section>
+						<p>
+							打开第<i>五大道APP</i>扫一扫登录<br><a href="register.html">立即注册有惊喜></a>
+						</p>
+					</div>
+					<div id='rt-log' class='logdiv'>
+						<input type="text" class='txt phone' placeholder="手机号">
+						<input type="password" class='txt pwd' placeholder="请输入密码">
+						<input type="submit" class='log' value='立即登录'>
+						<p><img src="img/is_yesmin.png" class='log-btn' alt="">自动登录<a href="">忘记密码？</a><a href="register.html">立即注册</a></p>
+					</div>
+					<fieldset id="other-log">
+						<legend>其他方式登录</legend>
+						<ul>
+							<li class='qq'></li>
+							<li class='wx'></li>
+							<li class='wb'></li>
+						</ul>					
+					</fieldset>
+				<!-- </section> -->
+				</form>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/jquery-2.1.0.min.js" ></script>
+		<script type="text/javascript" src="js/jquery.cookie.js" ></script>
+		<script type='text/javascript' src='js/login.js'></script>
+		<script>
+			$(function(){
+				$('#public').load('index.html #public1');
+				$.getScript('js/public.js');
+				if($.cookie('uname')){
+					$('.phone').val($.cookie('uname'));
+					$('.pwd').val($.cookie('upwd'));
+				}
+			})
+			
+		</script>
+		
+	</body>
+</html>

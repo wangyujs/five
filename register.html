@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>注册</title>
+		<link rel="stylesheet" href="css/register.min.css">
+	</head>
+	<body>
+		<div id="public"></div>
+		<header class='clear_fix'>
+			<img src="img/logomin.jpg" alt="">
+			<p>注册第五大道</p>
+			<h6><img src="img/phone-logomin.png" alt=""> 贵宾专线：4008-6767-38</h6>
+		</header>
+		<div id="banner">
+			<div id="banner-content">
+				<img src="img/login_background1min.jpg" alt="">
+				<form action="/user/reg" id='reg-tb' method=''>
+				<!-- <section id="reg-tb"> -->
+					注册第五大道
+					<input type="text" class='txt phone' placeholder="手机号">
+					<span class='tishi tishi1'><img src="img/closemin.png" alt="">请输入手机号码</span>
+					<input type="text" class='validnum' placeholder="验证码"><b class='validnum-btn'>获取验证码</b>
+					<input type="password" class='txt pwd' placeholder="请输入密码">
+					<input type="password" class='txt pwd2' placeholder="确认密码">
+					<span class='tishi tishi2'><img src="img/closemin.png" alt="">两次密码输入不一致</span>
+					<input type="submit" class='reg' value='立即注册'>
+					<p><img src="img/is_yesmin.png" class='reg-btn' alt="">我已阅读并同意<a href="login.html">已有账号？</a></p>
+				<!-- </section> -->
+				</form>	
+			</div>
+		</div>
+		<script type="text/javascript" src="js/jquery-2.1.0.min.js" ></script>
+		<script type="text/javascript" src="js/jquery.cookie.js" ></script>
+		<script type="text/javascript" src="js/register.js" ></script>
+		<script>
+			$(function(){
+				$('#public').load('index.html #public1');
+				$.getScript('js/public.js');
+			})
+		</script>
+		
+	</body>
+</html>

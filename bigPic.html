@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			li{
+				border:1px solid #ccc;
+				width:478px;
+				height:478px;
+				list-style: none;
+				position:relative;
+			}
+			li>img{
+				width:478px;
+				height:478px;
+			}
+			li>#mark1{
+				width:100%;
+				height:100%;
+				background:rgba(255,255,255,.5);
+				position:absolute;
+				left:0;top:0;z-index:2;
+				display:none;
+			}
+			li>#mark2{
+				width:100%;
+				height:100%;
+				position:absolute;
+				left:0;top:0;z-index:4;
+			}
+			#go{
+				width:100px;
+				height:100px;
+				position:absolute;
+				left:-2px;top:-2px;
+				border:2px solid #ccc;
+				background:rgba(0,0,0,0);
+				z-index:3;
+				overflow: hidden;
+				display:none;
+			}
+			#go img{
+				width:478px;
+				height:478px;
+				position:absolute;
+				left:0;top:0;
+			}
+		</style>
+	</head>
+	<body>
+		<li>
+			<img src="img2/product(0)min.jpg" alt="">
+			<div id="mark1"></div>
+			<span id='go' class='small'><img src="img2/product(0)min.jpg" alt=""></span>
+			<div id="mark2"></div>
+		</li>
+		<script type="text/javascript" src="js/jquery-2.1.0.min.js" ></script>
+		<script type="text/javascript" src="js/jquery.fly.js" ></script>
+		<script>
+			$('#mark2').hover(function(e){
+				$('#mark1').show();
+				$('#go').show();
+				$(this).after($('#go').clone().addClass('big').css({width:478,height:478,position:'absolute',left:500,top:0,borderWidth:1,zIndex:10}));
+				// $(this).after($('#go').clone().addClass('big').css({width:0,height:0,position:'absolute'}).animate({width:478,height:478,left:500,top:0,borderWidth:1},700));
+					
+					var PX = $('#go.big').width() / $('#go.small').width();
+					$('#go.big img').css({width:(PX*$('#go.small img').width()),height:(PX*$('#go.small img').width())});
+					$(this).fnMove();
+				
+				
+			},function(){
+				$('#mark1').hide();
+				$('#go').hide();
+				$('.big').remove();
+			})
+			
+			$.fn.extend({
+				fnMove : function(){
+					$(document).mousemove((e)=>{
+						var left = e.pageX - $(this).parent().offset().left - $('#go').outerWidth()/2;
+						var top = e.pageY - $(this).parent().offset().top - $('#go').outerHeight()/2;
+						if(left<=-2){
+							left=-2;
+						}else if(left >= $(this).width() - $('#go').outerWidth() + 2){
+							left = $(this).width() - $('#go').outerWidth() + 2;
+						}
+						if(top<=-2){
+							top=-2;
+						}else if(top >= $(this).height() - $('#go').outerHeight() + 2){
+							top = $(this).height() - $('#go').outerHeight() + 2;
+						}
+						$('#go').css({left:left,top:top});
+						$('#go img').css({left:-left,top:-top});
+						var PX = $('#go.big').width() / $('#go.small').width();
+						$('#go.big img').css({left:(PX*$('#go.small img').position().left),top:(PX*$('#go.small img').position().top)});
+					})
+				}
+			})
+			
+			
+		</script>
+	</body>
+</html>
